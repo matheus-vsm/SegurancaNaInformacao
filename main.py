@@ -89,23 +89,21 @@ Gustavo Leite Bueno de Oliveira - R.A: 22.121.057-8\n""")
 
 for idx, info_frase in enumerate(frases, start=1):
     texto = info_frase["texto"]
-    sha256_fornecido = info_frase["sha256"]
-    md5_fornecido = info_frase["md5"]
+    sha256_prof = info_frase["sha256"]
+    md5_prof = info_frase["md5"]
 
-    sha256_calculado = hashlib.sha256(texto.encode('utf-8')).hexdigest()
-    md5_calculado = hashlib.md5(texto.encode('utf-8')).hexdigest()
+    sha256_nosso = hashlib.sha256(texto.encode('utf-8')).hexdigest()
+    md5_nosso = hashlib.md5(texto.encode('utf-8')).hexdigest()
 
-    sha256_corresponde = sha256_calculado == sha256_fornecido
-    md5_corresponde = md5_calculado == md5_fornecido
+    sha256_corresponde = sha256_nosso == sha256_prof
+    md5_corresponde = md5_nosso == md5_prof
 
-
-    
     print(f'Frase {idx}:')
     print(f'Texto: "{texto}"')
-    print(f'Hash SHA256 fornecido: {sha256_fornecido}')
-    print(f'Hash SHA256 calculado: {sha256_calculado}')
+    print(f'Hash SHA256 fornecido: {sha256_prof}')
+    print(f'Hash SHA256 calculado: {sha256_nosso}')
     print(f'SHA256 correspondem: {sha256_corresponde}')
-    print(f'Hash MD5 fornecido: {md5_fornecido}')
-    print(f'Hash MD5 calculado: {md5_calculado}')
+    print(f'Hash MD5 fornecido: {md5_prof}')
+    print(f'Hash MD5 calculado: {md5_nosso}')
     print(f'MD5 correspondem: {md5_corresponde}')
     print("\n" + '-' * 80 + "\n")
